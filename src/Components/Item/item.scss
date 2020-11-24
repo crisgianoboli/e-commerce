@@ -1,0 +1,25 @@
+#ItemList {
+
+
+    display:flex;
+    justify-content: center;
+    margin-top: 100px;
+    
+
+    .item-container {
+        width: 300px;
+        margin: 0px 10px;
+        text-align: center;       
+        color: white;
+        border: 1px solid black;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+    }
+
+
+}
+
