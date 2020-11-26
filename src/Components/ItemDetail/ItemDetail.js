@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import ItemCount from '../ItemCount/ItemCount'
 
 const ItemDetail = ({ product }) => {
     // Recibir los items y hacer un map 
@@ -18,7 +19,7 @@ const ItemDetail = ({ product }) => {
             <img src={product.image}/>
             <p>{product.reviews}</p>
 
-            {/* CONTADOR  itemCount */}
+            <ItemCount maxValue={8} minValue={0} initialValue={0} onAdd={0}/>
             {/* Button "AGREGAR AL CARRITO" */}
             <button>Agregar al carrito</button>  
 
