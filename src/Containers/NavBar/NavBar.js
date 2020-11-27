@@ -1,7 +1,7 @@
-import React from 'react';
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
 import Icon  from "./CartIcon";
 
+// <NavLink to="/cart"></NavLink> agregar el cartIcon aqui 
 
 const NavBar = () => {
     return(

@@ -23,7 +23,7 @@ function App() {
           <Home />
         </Route>  
         {/* ItemDetailContainer */}
-        <Route exact path="/detail/:parametro">
+        <Route exact path="/detail/:id">
           <ItemDetailContainer />
         </Route>
      

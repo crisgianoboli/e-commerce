@@ -17,6 +17,15 @@
         &:hover {
             background-color: rgba(0,0,0,0.5);
         }
+
+        .item-content-div {
+
+            img {
+                border: 1px solid gray;
+                width: 290px;
+                height: 200px;
+            }
+        }
         
     }
 
