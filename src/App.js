@@ -1,7 +1,8 @@
 import React from 'react';
 import NavBar from './Containers/NavBar/NavBar';
 import Home from './Containers/Home/Home';
-import ItemDetailContainer from './Containers/ItemDetailContainer/ItemDetailContainer'
+import ItemDetailContainer from './Containers/ItemDetailContainer/ItemDetailContainer';
+import Cart from './Components/Cart/Cart'
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import './App.scss';
@@ -17,15 +18,21 @@ function App() {
       <NavBar />
 
       <Switch>
-        <div className="App">      
-        {/* Star Containers */}
+        <div className="App">   
+
+        {/* // Star Containers // */}
         <Route exact path="/">
           <Home />
         </Route>  
-        {/* ItemDetailContainer */}
+
         <Route exact path="/detail/:id">
           <ItemDetailContainer />
         </Route>
+
+        <Route exact path="/cart">
+          <Cart />
+        </Route>
+
      
       {/* End Containers */}
       </div>

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import ItemCount from "../ItemCount/ItemCount";
 import { Button } from 'react-bootstrap';
 import "./ItemDetail.scss";
@@ -24,8 +23,10 @@ const ItemDetail = ({ product }) => {
         <div>
           <p>{product.description}</p>
           <ItemCount maxValue={8} minValue={0} initialValue={0} onAdd={0} />
-          {/* Button "AGREGAR AL CARRITO" */}
-          <Button variant="light">Agregar al carrito</Button>
+          
+          <Button variant="light">
+            <Link to='/Cart'>Agregar al carrito </Link>
+          </Button>
 
           <Button variant="dark">
             <Link to={"/"}> Volvamos al Listado </Link>

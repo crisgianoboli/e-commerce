@@ -1,15 +1,15 @@
-import React from "react";
-import { GiBasketballBall } from "react-icons/gi";
+import { FiShoppingCart } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
+import './CartIcon.scss';
 
-
-
-const Icon = () => {
+const CartIcon = () => {
     return (
         <div>
-        <GiBasketballBall className="icono"/>
-    </div> 
-    )  
+            <Link to='/cart'>
+               <FiShoppingCart className="cart-icon"/>
+            </Link>
+        </div>
+    )
 }
 
-
-export default Icon;
+export default CartIcon
