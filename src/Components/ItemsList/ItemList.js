@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import Item from '../Item/Item';
 
 
@@ -7,7 +6,7 @@ const ItemList = ({ items }) => {
 
 
     return (
-        <div id="ItemList">
+        <div id="ItemList" className="item-container">
             {items.map((item, idx) => {
                 return(
                     <Item key={idx} item={item}/>

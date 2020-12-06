@@ -1,12 +1,211 @@
-#ItemList {
+.item-container {
 
-
+    position: relative;
     display:flex;
     justify-content: center;
-    margin-top: 100px;
+    align-items: center;
+    width: 100%;
+    margin-top: 40px;
+    /* transform-style: preserve-3d; */
+
+    .box {
+        
+        position: relative;
+        width: 300px;
+        height: 400px;
+        margin: 5px;
+        background: rgb(35, 35, 35);
+        border-radius: 20px;
+       /*  transform-style: preserve-3d; */
+
+
+        .name-product {
+
+            position: absolute;
+            top: 0;
+            left: 0;
+            text-align: center;
+            color: white;
+            width: 100%;
+            z-index: 100;            
+        }
+
+        .buy {
+
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            color: #fff;
+            background: #333;
+            padding: 10px 25px;
+            border-radius: 30px;            
+            z-index: 10;
+
+            .btn-buy{
+
+                color: white;
+
+                &:hover {
+                    text-decoration: none;
+                    color: red;
+                }         
+            }          
+        }
+
+        .product {
+
+            width: 280px;
+            height: 330px;
+            position: absolute;
+            border-radius: 30%;
+            top: 50%;
+            left: 50%;
+            max-width: 300px;            
+            z-index: 9;            
+            transform: translate3d(-50%, -50%, 0px); 
+    
+            &:hover {
+                opacity: 0.5;
+            }
+        }
+    }
     
 
-    .item-container {
+    /* .item-container {
+
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 1200px;
+        transform-style: preserve-3d;
+
+        .box {
+            position: relative;
+            width: 300px;
+            height: 400px;
+            margin: 40px;
+            background: rgb(35, 35, 35);
+            border-radius: 20px;
+            transform-style: preserve-3d;
+
+            &::before {
+                content: 'Nike';
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                font-size: 6em;
+                font-weight: 900;
+                color: white;
+                font-style: italic;
+                opacity: 0;
+                transition: 0.5s;
+            }
+
+            &::after {
+                content: 'Shoes';
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                font-size: 5em;
+                font-weight: 900;
+                color: white;
+                font-style: italic;
+                opacity: 0;
+                transition: 0.5s;
+            }
+
+            &:hover,
+            ::before {
+                opacity: 0.04;                
+            }
+
+            &:hover,
+            ::after {
+                opacity: 0.04;
+            }
+
+            .name-product {
+
+                position: absolute;
+                top: 0;
+                left: 0;
+                text-align: center;
+                color: white;
+                width: 100%;
+                transform-style: preserve-3d;
+                transform: translate(0,0,75px);
+                transition: 0.5s;
+                opacity: 0;
+                z-index: 10;
+
+                &:hover{
+                    top: 40px;
+                    opacity: 1;
+                }
+            }
+
+            .buy {
+
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform-style: preserve-3d;
+                transform: translate(-50% ,0 ,75px);
+                color: #fff;
+                background: #333;
+                padding: 10px 25px;
+                border-radius: 30px;
+                text-decoration: none;
+                transition: 0.5s;
+                opacity: 0;
+                z-index: 10;
+
+                &:hover {
+                    bottom: 30px;
+                    opacity: 1;
+                }
+            }
+
+            .circle {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+                transition: 0.5s;
+                background: white;
+                transform-style: preserve-3d;
+                z-index: 10;
+                opacity: 1;
+                transform: translate(-50%, -50%, -50px);
+
+            }
+
+            .product {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                max-width: 300px;
+                transition: 0.5s;
+                z-index: 11;
+                transform-style: preserve-3d;
+                transform: translate3d(-50%, -50%, 0px) rotate(-15deg);
+
+            }
+        } 
+    }*/
+
+
+
+
+
+
+
+
+    /* .item-container {
         width: 300px;
         margin: 0px 10px;
         text-align: center;       
@@ -30,7 +229,7 @@
             }
         }
         
-    }
+    } */
 
 
 }

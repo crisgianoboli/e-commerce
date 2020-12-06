@@ -3,14 +3,31 @@ import { useParams, Link } from "react-router-dom";
 import ItemCount from "../ItemCount/ItemCount";
 import { Button } from 'react-bootstrap';
 import "./ItemDetail.scss";
+import useAppContext from "../Context/AppContext";
+
+
 
 const ItemDetail = ({ product }) => {
-  // Recibir los items y hacer un map
+  
   const { parametro } = useParams();
+  const [quantity, setQuantity] = useState(1);
 
+
+  const {addProduct} = useAppContext()
+ 
   useEffect(() => {
     console.log(parametro);
   }, [parametro]);
+
+  const counterHandler = (counter) => {  // ver esto
+      setQuantity(counter);
+  }
+
+  const addProductToCart = () => {
+       addProduct(product, quantity);
+
+       console.log({...product, quantity});
+  }
 
   return (
     <div className="detail-content">
@@ -22,9 +39,9 @@ const ItemDetail = ({ product }) => {
         <img src={product.image} alt="image" />        
         <div>
           <p>{product.description}</p>
-          <ItemCount maxValue={8} minValue={0} initialValue={0} onAdd={0} />
+          <ItemCount maxValue={10} minValue={0} initialValue={0} onAdd={counterHandler} />
           
-          <Button variant="light">
+          <Button variant="light" onClick={addProductToCart}>
             <Link to='/Cart'>Agregar al carrito </Link>
           </Button>
 

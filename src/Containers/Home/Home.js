@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import ItemList from '../../Components/ItemsList/ItemList';
 import { getProducts } from '../../api/Products';
-import home from './home.scss';
+import './home.scss';
+import useAppContext from '../../Components/Context/AppContext';
 
 const Home = () => {
     //llamado a la promise o api, que devuelve un listado de productos para la HOME
 
+    const valorQuevienedeApp = useAppContext()
     const [items, setItems] = useState([])
 
 
@@ -26,7 +28,7 @@ const Home = () => {
 
     return (
         <div id="Home" className="home-container">
-            <h2 className="greeting">Goes Shop</h2>
+            <h2 className="greeting">Goes Shop {valorQuevienedeApp.name}</h2>
             {/* llamar al ITEM LIST */}
             <ItemList items={items} />
         </div>
