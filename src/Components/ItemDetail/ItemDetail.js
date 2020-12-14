@@ -1,32 +1,27 @@
-import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useState, useContext } from "react";
+import { Link } from "react-router-dom";
 import ItemCount from "../ItemCount/ItemCount";
 import { Button } from 'react-bootstrap';
 import "./ItemDetail.scss";
-import useAppContext from "../Context/AppContext";
+import {CartContext} from "../Context/CartContext";
 
 
 
 const ItemDetail = ({ product }) => {
   
-  const { parametro } = useParams();
   const [quantity, setQuantity] = useState(1);
 
-
-  const {addProduct} = useAppContext()
+  const [cart, setCart] = useContext(CartContext); 
  
-  useEffect(() => {
-    console.log(parametro);
-  }, [parametro]);
 
   const counterHandler = (counter) => {  // ver esto
       setQuantity(counter);
   }
 
   const addProductToCart = () => {
-       addProduct(product, quantity);
+    setCart([...cart, {quantity: quantity, item: product}])  
 
-       console.log({...product, quantity});
+    //agregar funcionalidad de si agrego el mismo producto que no me agregue de nuevo el producto, sino la cantidad
   }
 
   return (
@@ -36,7 +31,7 @@ const ItemDetail = ({ product }) => {
         <h3>{product.price}</h3>
       </div>
       <div className="image-detail">
-        <img src={product.image} alt="image" />        
+        <img src={product.image} alt="product" />        
         <div>
           <p>{product.description}</p>
           <ItemCount maxValue={10} minValue={0} initialValue={0} onAdd={counterHandler} />
@@ -55,3 +50,29 @@ const ItemDetail = ({ product }) => {
 };
 
 export default ItemDetail;
+
+
+/* 
+const addToCart = () => {
+    const sameId = cart.some((element) => element.item.id === item.id);
+
+    // Si el producto ya está agregado al carrito, aumenta la cantidad.
+    if (sameId) {
+      cart.forEach((element) => {
+        if (element.item.id === item.id) {
+          const newCart = cart.filter((el) => el.item.id !== item.id);
+          setCart([
+            ...newCart,
+            {
+              item: item,
+              quantity: element.quantity + parseInt(counter),
+            },
+          ]);
+        }
+      });
+    } else {
+      // Si el producto no está agregado al carrito, lo añade.
+      setCart([...cart, { item: item, quantity: parseInt(counter) }]);
+    }
+  };
+*/

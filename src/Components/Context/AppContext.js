@@ -1,55 +1,35 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useState, useEffect } from 'react';
+import { getFirestore } from '../../firebase';
 
-const AppContext = createContext();
-const useAppContext = () => useContext(AppContext)
+export const AppContext = createContext();
 
 export const AppProvider = ({children}) => {
 
-    const [products, setproducts] = useState([]);
-
-    //{id, imagen, text, count}
-    const addProduct = (product, quantity) => {
-        /* setproducts([...products, {...product, quantity}]); */
-        // buscar si en el array existen
-        const existing = products.find((p) => p.id === product.id)
+    const [products, setProducts] = useState();
+    useEffect(() => {
         
-        //si existe sumar cantidades
-        if(existing) {
-            existing.quantity += quantity;
-            setproducts([...products])
-        }
-        else {
-            // si no existe agregar
-            setproducts([...products, {...product, quantity}])
-        }
-     
-    }
+        //referencia
+        const db = getFirestore();
+        const productColection = db.collection('productos');
+        // con esta linea traemos un producto por id
+        // const idProduct = productColection.doc('') 
 
-    //REVISAR AL AGREGAR, QUE GUARDE LA INFO DE LOS PRODUCTOS ANTES ELEGIDOS
-    
-    //get product count
-    const productsCount = () => {
-        return products.reduce((acc, p) => (acc += p.quantity), 0)
-    }
-
-    //editar cantidades es
+        // pedimos los datos a la base de datos
+        productColection.get().then((querySnapshot) => {
+            if (querySnapshot.size === 0) {
+              console.log("No results!");
+            }
+            setProducts(
+              querySnapshot.docs.map((doc) => {
+                return { id: doc.id, ...doc.data() };
+              })
+            );
+          })
+    }, []);
 
 
-    //eliminar cantidades
-
-
-
-    // total de productos
-
-
-
-    // eliminar un item del carrito
-
-    
-    return <AppContext.Provider value={{products, addProduct, productsCount}}> 
-            {children}
+    return <AppContext.Provider value={{products}}>  
+        {children}  
     </AppContext.Provider>
 
 }
-
-export default useAppContext

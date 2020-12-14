@@ -12,7 +12,7 @@ const Item = ({ item }) => {
                 <button className="buy">
                 <Link to={"/detail/"+item.id} className="btn-buy"> Comprar </Link>
                 </button>
-                <img src={item.image} alt="image nike" className="product"/>
+                <img src={item.image} alt="nike" className="product"/>
             </div> 
         </div>
   );

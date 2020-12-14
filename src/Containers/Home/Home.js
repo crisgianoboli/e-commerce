@@ -1,38 +1,19 @@
-import { useEffect, useState } from 'react';
-import ItemList from '../../Components/ItemsList/ItemList';
-import { getProducts } from '../../api/Products';
-import './home.scss';
-import useAppContext from '../../Components/Context/AppContext';
+import { useContext } from "react";
+import { AppContext } from '../../Components/Context/AppContext'
+import ItemList from "../../Components/ItemsList/ItemList";
+import "./home.scss";
 
 const Home = () => {
-    //llamado a la promise o api, que devuelve un listado de productos para la HOME
 
-    const valorQuevienedeApp = useAppContext()
-    const [items, setItems] = useState([])
+  const {products} = useContext(AppContext);
 
-
-    useEffect(() => {
-        setTimeout(() => {
-            getProducts()
-        .then(
-        (response) => {
-          setItems(response)
-        },
-        (err) => {
-            console.error(err);
-        })
-        .finally(() => {})
-
-        }, 3000);
-    }, [])
-
-    return (
-        <div id="Home" className="home-container">
-            <h2 className="greeting">Goes Shop {valorQuevienedeApp.name}</h2>
-            {/* llamar al ITEM LIST */}
-            <ItemList items={items} />
-        </div>
-    )
-}
+  return (
+    <div id="Home" className="home-container">
+      <h2 className="greeting">Goes Shop</h2>
+      {/* llamar al ITEM LIST */}
+      <ItemList items={products} />
+    </div>
+  );
+};
 
 export default Home;

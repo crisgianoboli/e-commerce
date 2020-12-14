@@ -1,16 +1,19 @@
-import React from 'react';
-import useAppContext from '../Context/AppContext';
+import React, {useContext} from 'react';
+import {CartContext} from '../Context/CartContext';
 
 
 const Cart = () => {
 
-    const { products } = useAppContext()
-    console.log(products);
+    const [cart] = useContext(CartContext); // , setCart agregar para eliminar editar items
     return (
         //traer el valor del itemCounter, producto, detalle de lo que compra y medios de pago
+        
         <div className="cart-section">
-            {products.map((product) => (
-            <h1> {product.productName}  </h1>
+         {cart.map((item) => (
+                <div>
+            <h1> {item.item.name}</h1>
+            <p>{item.quantity}</p>            
+            </div>
             ))}
             
         </div>

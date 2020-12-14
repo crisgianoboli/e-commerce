@@ -4,7 +4,7 @@ import Home from "./Containers/Home/Home";
 import ItemDetailContainer from "./Containers/ItemDetailContainer/ItemDetailContainer";
 import Cart from "./Components/Cart/Cart";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-
+import {CartProvider} from '../src/Components/Context/CartContext'
 import "./App.scss";
 import { AppContext, AppProvider } from "./Components/Context/AppContext";
 
@@ -12,6 +12,7 @@ function App() {
 
   return (
     <AppProvider>
+    <CartProvider>  
       <BrowserRouter>
         {/* NavBar */}
         <NavBar />
@@ -36,6 +37,7 @@ function App() {
         </Switch>
         {/* Footer */}
       </BrowserRouter>
+    </CartProvider>  
     </AppProvider>
   );
 }

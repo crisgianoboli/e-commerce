@@ -1,4 +1,5 @@
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
+import {Link } from 'react-router-dom';
 import Icon  from "./Icon";
 import CartIcon from '../NavBar/CartIcon'
 
@@ -8,7 +9,9 @@ const NavBar = () => {
     return(
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="nav-bar-container">
         <Icon/>
+        <Link to="/">
         <Navbar.Brand href="#home" className="title-pr" > Goes </Navbar.Brand>
+        </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav" >
           <Nav className="mr-auto" className="nav-links">

@@ -7,7 +7,7 @@ const ItemList = ({ items }) => {
 
     return (
         <div id="ItemList" className="item-container">
-            {items.map((item, idx) => {
+            {items?.map((item, idx) => {
                 return(
                     <Item key={idx} item={item}/>
                 )
