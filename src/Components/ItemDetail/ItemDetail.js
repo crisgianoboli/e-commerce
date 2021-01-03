@@ -19,8 +19,16 @@ const ItemDetail = ({ product }) => {
   }
 
   const addProductToCart = () => {
-    setCart([...cart, {quantity: quantity, item: product}])  
 
+    const existing = cart.find((p) => p.id === product.id)
+    if (existing) {
+      existing.quantity += quantity
+      setCart([...cart])
+    } else {
+      setCart([...cart, {quantity: quantity, item: product}])
+    }      
+
+    /* setCart([...cart, {quantity: quantity, item: product}]) */
     //agregar funcionalidad de si agrego el mismo producto que no me agregue de nuevo el producto, sino la cantidad
   }
 
@@ -41,7 +49,7 @@ const ItemDetail = ({ product }) => {
           </Button>
 
           <Button variant="dark">
-            <Link to={"/"}> Volvamos al Listado </Link>
+            <Link to={"/"}> Volver al listado </Link>
           </Button>
         </div>
       </div>

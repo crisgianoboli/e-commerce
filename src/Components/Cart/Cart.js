@@ -1,14 +1,14 @@
 import React, { useContext, useState, useEffect } from "react";
 import { CartContext } from "../Context/CartContext";
-import {Button} from 'react-bootstrap';
 import {Form} from '../Form/Form';
 import {getFirestore} from '../../firebase/index';
 import "./Cart.scss";
 
 const Cart = () => {
-  const [cart] = useContext(CartContext);//  agregar setCart para eliminar, editar items
+  const [cart, setCart] = useContext(CartContext);//  agregar setCart para eliminar, editar items
   const [total, setTotal] = useState(0);
   const [orderId, setOrderId] = useState("");
+
 
 
   useEffect(() => {
@@ -19,6 +19,24 @@ const Cart = () => {
     })
     setTotal(totalCart);
   }, [cart]);
+
+
+  // obtener total de compra
+  const getGrandTotal = () => {
+    return cart.reduce((acc, p) => (acc += p.item.price * p.quantity), 0);
+  };
+
+  // borrar productos 
+  const deleteProduct = (id) => {
+   cart.splice(
+      cart.findIndex((p) => p.id === id),
+      1  
+    ); 
+
+    setCart([...cart]);
+
+  };
+
 
   const addOrder = (dataBuyer) => {
     let newOrder = {
@@ -33,7 +51,8 @@ const Cart = () => {
       .add(newOrder)
       .then(function (docRef) {
         setOrderId(docRef.id);
-        alert("el id de tu compra es:", orderId);
+        alert("El Id de tu compra es: " + docRef.id);
+        
       })
       .catch(function (error) {
         console.error("Error adding document: ", error);
@@ -54,8 +73,9 @@ const Cart = () => {
           </div>
         </div>
       ))}
-      <Button variant="dark">Comprar</Button>
-        <Form addOrder = {addOrder}/>
+      <h3>Total de su orden ${getGrandTotal()}</h3>
+      <button onClick={deleteProduct}>Borrar</button>
+      <Form addOrder = {addOrder}/>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 // Esta funcion es llamada por la Home para darle al usuario un listado de productos 
 
 
-export const getProducts = () => {
+/* export const getProducts = () => {
     return new Promise((resolve, reject) => {
         resolve(
             [
@@ -11,10 +11,10 @@ export const getProducts = () => {
                 {id:4, productName: "Adidas Star black", price: '$12000', image: 'https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy/bc6ff011cbfe4b18bc56a7fa00eaddfc_9366/Stan_Smith_Shoes_Black_M20327_01_standard.jpg' },
         ])
     })
-}
+} */
 
 //Esta funcion devuelve un objeto para mostrar en detalle el producto seleccionado
-export const getProduct = () => {
+/* export const getProduct = () => {
     return new Promise((resolve, reject) => {
         resolve(            
             [
@@ -25,4 +25,4 @@ export const getProduct = () => {
         ]    
         )
     })
-}
+} */

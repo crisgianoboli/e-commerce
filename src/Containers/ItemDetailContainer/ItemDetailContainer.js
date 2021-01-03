@@ -21,7 +21,7 @@ const ItemDetailContainer = () => {
           setLoading(false);
         } else {
           // doc.data() will be undefined in this case
-          console.log("No such document!");
+          alert("No hay productos wacho!!");
         }
       })
       .catch(function (error) {

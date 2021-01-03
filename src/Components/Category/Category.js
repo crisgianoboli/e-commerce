@@ -1,11 +1,9 @@
-import Item from '../Item/Item';
+import Item from "../Item/Item";
 
-
-const ItemList = ({ items }) => {
-    // Recibir los items y hacemos un map 
+const Category = ({products}) => {
     return (
         <div id="ItemList" className="item-container">
-            {items?.map((item, idx) => {
+            {products?.map((item, idx) => {
                 return(
                     <Item key={idx} item={item}/>
                 )
@@ -14,4 +12,4 @@ const ItemList = ({ items }) => {
     )
 }
 
-export default ItemList;
+export default Category

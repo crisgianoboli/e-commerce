@@ -7,6 +7,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import {CartProvider} from '../src/Components/Context/CartContext'
 import "./App.scss";
 import { AppContext, AppProvider } from "./Components/Context/AppContext";
+import CategoryContainer from "./Containers/CategoryContainer/CategoryContainer";
 
 function App() {
 
@@ -19,9 +20,13 @@ function App() {
 
         <Switch>
           <div className="App">
-            {/* // Star Containers // */}
+            {/* // Start Containers // */}
             <Route exact path="/">
               <Home />
+            </Route>
+
+            <Route exact path="/category/:id">
+                <CategoryContainer/>
             </Route>
 
             <Route exact path="/detail/:id">
